@@ -2,4 +2,8 @@ FROM public.ecr.aws/lambda/provided:al2
 
 COPY ./target/x86_64-unknown-linux-musl/release/cli-mixed ${LAMBDA_RUNTIME_DIR}/bootstrap
 
+COPY ./lambda-entrypoint-with-args.sh /
+
+ENTRYPOINT ["/lambda-entrypoint-with-args.sh"]
+
 CMD ["hello"]
